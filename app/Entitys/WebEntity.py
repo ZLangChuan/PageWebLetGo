@@ -10,7 +10,7 @@ class WebEntity(BaseEntity):
     """
     __tablename__ = "t_web"
     name = db.Column(db.String, nullable=True)  # 网站名称
-    url = db.Column(db.Url, nullable=True)  # 地址
+    url = db.Column(db.String, nullable=True)  # 地址
     web_launch_date = db.Column(db.BigInteger, nullable=True)  # 网站上线日期
     country = db.Column(db.String, nullable=True)  # 国家
 
