@@ -7,6 +7,7 @@ from apiflask import APIFlask
 from flask import g
 from flask_apscheduler import APScheduler
 from flask_cors import CORS
+from flask_migrate import Migrate
 
 from common.configs import LogConfig
 from common.utils.MongoUtil import MongoUtil
@@ -25,7 +26,8 @@ def create_app(test_config=None):
     PostgresUtile.set_postgres(app)
 
     postgres_db.init_app(app)
-
+    migrate = Migrate()
+    migrate.init_app(app, postgres_db)
     app.config.from_mapping(
         SECRET_KEY="dev",
         DATABASE=os.path.join(app.instance_path, "flaskr.sqlite"),
@@ -61,9 +63,9 @@ def create_app(test_config=None):
     # 设置项目的Log
     app.logger.addHandler(LogConfig.base_config(app.name))
     app.logger.setLevel(logging.INFO)
-    app.logger.info(f"{time.time()} - Aurora 服务器启动")
+    app.logger.info(f"{time.time()} - app 服务器启动")
 
     # 设置 MongoDB 数据库
-    mongo = MongoUtil.set_app(app=app, section_name="web_mongodb", open_db="webb")
+    # mongo = MongoUtil.set_app(app=app, section_name="web_mongodb", open_db="webb")
 
     return app
