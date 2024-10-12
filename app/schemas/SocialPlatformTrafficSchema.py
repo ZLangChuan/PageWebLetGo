@@ -6,16 +6,16 @@ from apiflask.fields import URL, Boolean, Float, Integer, List, String, Tuple
 from apiflask.validators import OneOf, Range
 from marshmallow import INCLUDE, post_load, pre_dump, pre_load
 
-from app.Entitys import CountryAreaTrafficEntity
+from app.Entitys import SocialPlatformTrafficEntity
 from common.schemas import BaseSchemaIn, BaseSchemaOut
 from common.utils import NaningDatetimeUtil
 
 
-class CountryAreaTrafficSchemaIn(BaseSchemaIn):
+class SocialPlatformTrafficSchemaIn(BaseSchemaIn):
     """
     该类用于前端的收入，需要强验证
 
-    :Class: `CountryAreaTrafficEntity`
+    :Class: `SocialPlatformTrafficEntity`
     """
 
     web_id = Integer(required=True)  # 中文提示词
@@ -32,14 +32,14 @@ class CountryAreaTrafficSchemaIn(BaseSchemaIn):
     @post_load(pass_many=True)
     def wrap_post_load(
         self, data: object, **kwargs
-    ) -> CountryAreaTrafficEntity | list[CountryAreaTrafficEntity]:
+    ) -> SocialPlatformTrafficEntity | list[SocialPlatformTrafficEntity]:
         """
         添加该schema的 序列化 前的逻辑
         """
         if isinstance(data, dict):
-            return CountryAreaTrafficEntity(**data)
+            return SocialPlatformTrafficEntity(**data)
         else:
-            return [CountryAreaTrafficEntity(**item) for item in data]
+            return [SocialPlatformTrafficEntity(**item) for item in data]
 
 
 class PromptSchemaOut(BaseSchemaOut):
@@ -47,7 +47,6 @@ class PromptSchemaOut(BaseSchemaOut):
     该类用于格式化输出 不需要验证
     """
 
-    id: int = Integer()
     web_id = Integer()  # 中文提示词
     name = String()
     rate = Float()
