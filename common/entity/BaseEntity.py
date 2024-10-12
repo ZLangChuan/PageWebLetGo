@@ -6,7 +6,7 @@ from common.utils.Postgres import postgres_db as db
 class BaseEntity:
     """
     基础实体类
-
+    :param id: id
     :param create_user_id: 创建人id
     :param create_time: 创建时间
     :param update_time: 更新时间
@@ -15,6 +15,7 @@ class BaseEntity:
     :param has_delete: 是否删除
     """
 
+    id: int = db.Column(db.Integer, primary_key=True, unique=True)
     create_user_id = db.Column(db.Integer, nullable=True)
     create_time = db.Column(db.BigInteger, nullable=True)
     update_time = db.Column(db.BigInteger, nullable=True)
@@ -24,6 +25,7 @@ class BaseEntity:
 
     def __init__(
         self,
+        id: int = None,
         create_user_id: int = None,
         create_time: int = None,
         update_time: int = None,
@@ -32,6 +34,7 @@ class BaseEntity:
         has_delete: int = None,
         **args
     ) -> None:
+        self.id = id
         self.create_user_id = create_user_id
         self.create_time = create_time
         self.update_time = update_time

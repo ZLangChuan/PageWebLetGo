@@ -5,6 +5,7 @@ from apiflask.fields import Integer, List, Nested, String
 
 
 class BaseSchemaIn(Schema):
+    id: int = Integer()
     create_user_id = Integer(required=False, load_default=0)
     create_time = Integer(required=False, load_default=(time.time() * 1000))
     update_time = Integer(required=False, load_default=(time.time() * 1000))
@@ -14,6 +15,7 @@ class BaseSchemaIn(Schema):
 
 
 class BaseSchemaOut(Schema):
+    id: int = Integer()
     create_user_id = Integer(required=False, load_default=0)
     create_time = Integer(required=False, load_default=0)
     update_time = Integer(required=False, load_default=0)
