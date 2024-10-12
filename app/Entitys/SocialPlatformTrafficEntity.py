@@ -10,4 +10,4 @@ class SocialPlatformTrafficEntity(BaseEntity):
     name = db.Column(db.String(20), nullable=False)  # 平台名称
     rate = db.Column(db.Float, nullable=False)  # 占比
     change = db.Column(db.Float, nullable=False)  # 变化率
-    year_months = db.Column(db.String(20), nullable=False)  # 几年几月 2023-01
+    year_months = db.Column(db.BigInteger, nullable=False)  # 几年几月 2023-01

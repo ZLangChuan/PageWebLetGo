@@ -18,4 +18,4 @@ class TrafficSourceEntity(BaseEntity):
     natural_search = db.Column(db.Float, nullable=False)  # 自然搜索访问占比
     paid_search = db.Column(db.Float, nullable=False)  # 付费搜索访问占比
     display_ads = db.Column(db.Float, nullable=False)  # 展示广告访问占比
-    year_months = db.Column(db.String(20), nullable=False)  # 几年几月 2023-01
+    year_months = db.Column(db.BigInteger, nullable=False)  # 几年几月 2023-01
