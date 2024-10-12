@@ -42,7 +42,7 @@ class SocialPlatformTrafficSchemaIn(BaseSchemaIn):
             return [SocialPlatformTrafficEntity(**item) for item in data]
 
 
-class PromptSchemaOut(BaseSchemaOut):
+class SocialPlatformTrafficSchemaOut(BaseSchemaOut):
     """
     该类用于格式化输出 不需要验证
     """

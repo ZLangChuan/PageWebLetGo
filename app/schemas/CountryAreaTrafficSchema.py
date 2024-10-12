@@ -42,7 +42,7 @@ class CountryAreaTrafficSchemaIn(BaseSchemaIn):
             return [CountryAreaTrafficEntity(**item) for item in data]
 
 
-class PromptSchemaOut(BaseSchemaOut):
+class CountryAreaTrafficSchemaOut(BaseSchemaOut):
     """
     该类用于格式化输出 不需要验证
     """
