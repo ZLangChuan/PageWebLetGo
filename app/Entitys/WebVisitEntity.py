@@ -17,6 +17,6 @@ class WebVisitEntity(BaseEntity):
         self.visit = visit
         self.year_months = year_months
         super().__init__(**kwargs)
-    
+
     def __repr__(self):
-        return f"<WebVisitEntity {self.id}>"   
+        return f"<WebVisitEntity {self.id}>"
