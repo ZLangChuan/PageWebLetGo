@@ -3,7 +3,9 @@ from common.utils.Postgres import postgres_db as db
 
 
 class CountryAreaTrafficEntity(BaseEntity):
-    """国家地区流量"""
+    """
+    国家地区流量
+    """
 
     __tablename__ = "t_country_area_traffic"
     web_id = db.Column(db.BigInteger, nullable=False)  # 网站id
@@ -11,3 +13,14 @@ class CountryAreaTrafficEntity(BaseEntity):
     rate = db.Column(db.Float, nullable=False)  # 占比
     change = db.Column(db.Float, nullable=False)  # 变化率
     year_months = db.Column(db.String(20), nullable=False)  # 几年几月 2023-01
+
+    def __init__(self, web_id, name, rate, change, year_months, **kwargs):
+        self.web_id = web_id
+        self.name = name
+        self.rate = rate
+        self.change = change
+        self.year_months = year_months
+        super().__init__(**kwargs)
+
+    def __repr__(self):
+        return f"<CountryAreaTrafficEntity {self.id}>"
