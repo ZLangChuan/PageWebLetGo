@@ -10,7 +10,7 @@ from flask_cors import CORS
 
 from common.configs import LogConfig
 from common.utils.MongoUtil import MongoUtil
-from common.utils.Postgres import postgres_db, set_postgres
+from common.utils.Postgres import PostgresUtile, postgres_db
 
 
 def create_app(test_config=None):
@@ -22,7 +22,7 @@ def create_app(test_config=None):
     CORS(app)  # 设置跨域
 
     # 初始化 postgres 数据库
-    set_postgres(app)
+    PostgresUtile.set_postgres(app)
 
     postgres_db.init_app(app)
 
