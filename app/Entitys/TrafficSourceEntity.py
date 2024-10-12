@@ -7,7 +7,7 @@ class TrafficSourceEntity(BaseEntity):
     网站的流量来源渠道信息
     """
 
-    __tablename__ = "t_web_visit"
+    __tablename__ = "t_traffic_source"
     web_id = db.Column(db.BigInteger, nullable=False)  # 网站id
     desktop_traffic = db.Column(db.Float, nullable=False)  # 桌面端占比
     mobile_traffic = db.Column(db.Float, nullable=False)  # 移动端占比
