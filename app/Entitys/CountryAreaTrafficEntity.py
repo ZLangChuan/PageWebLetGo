@@ -12,9 +12,11 @@ class CountryAreaTrafficEntity(BaseEntity):
     name = db.Column(db.String(20), nullable=False)  # 国家名称
     rate = db.Column(db.Float, nullable=False)  # 占比
     change = db.Column(db.Float, nullable=False)  # 变化率
-    year_months = db.Column(db.String(20), nullable=False)  # 几年几月 2023-01
+    year_months = db.Column(db.BigInteger, nullable=False)  # 几年几月 2023-01
 
-    def __init__(self, web_id=None, name=None, rate=None, change=None, year_months=None, **kwargs):
+    def __init__(
+        self, web_id=None, name=None, rate=None, change=None, year_months=None, **kwargs
+    ):
         self.web_id = web_id
         self.name = name
         self.rate = rate
