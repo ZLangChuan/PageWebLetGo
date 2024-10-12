@@ -6,7 +6,7 @@ from apiflask.fields import URL, Boolean, Float, Integer, List, String, Tuple
 from apiflask.validators import OneOf, Range
 from marshmallow import INCLUDE, post_load, pre_dump, pre_load
 
-from app.Entitys import SocialPlatformTrafficEntity
+from app.Entitys import CountryAreaTrafficEntity
 from common.schemas import BaseSchemaIn, BaseSchemaOut
 from common.utils import NaningDatetimeUtil
 
@@ -32,14 +32,14 @@ class SocialPlatformTrafficSchemaIn(BaseSchemaIn):
     @post_load(pass_many=True)
     def wrap_post_load(
         self, data: object, **kwargs
-    ) -> SocialPlatformTrafficEntity | list[SocialPlatformTrafficEntity]:
+    ) -> CountryAreaTrafficEntity | list[CountryAreaTrafficEntity]:
         """
         添加该schema的 序列化 前的逻辑
         """
         if isinstance(data, dict):
-            return SocialPlatformTrafficEntity(**data)
+            return CountryAreaTrafficEntity(**data)
         else:
-            return [SocialPlatformTrafficEntity(**item) for item in data]
+            return [CountryAreaTrafficEntity(**item) for item in data]
 
 
 class SocialPlatformTrafficSchemaOut(BaseSchemaOut):
