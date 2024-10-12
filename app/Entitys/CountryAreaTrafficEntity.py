@@ -14,7 +14,7 @@ class CountryAreaTrafficEntity(BaseEntity):
     change = db.Column(db.Float, nullable=False)  # 变化率
     year_months = db.Column(db.String(20), nullable=False)  # 几年几月 2023-01
 
-    def __init__(self, web_id, name, rate, change, year_months, **kwargs):
+    def __init__(self, web_id=None, name=None, rate=None, change=None, year_months=None, **kwargs):
         self.web_id = web_id
         self.name = name
         self.rate = rate
